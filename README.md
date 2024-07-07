@@ -1,7 +1,23 @@
 # Robotic Printing
 ###### A controller box and mounts to get started with the Massive Dimension thermoplastic extruder MDPH2 on UR10e
 
-![Render_MDPH2_on_UR10e](Pictures/Render_MDPH2_on_UR10e.jpg)
+1.
+![RobotPrint_Ajustable_Speed](Pictures/RobotPrint_Ajustable_Speed.jpg)
+
+2.
+![RoboticPrinting_Basic_Script](Pictures/RoboticPrinting_Basic_Script.jpg)
+
+3.
+![RoboticPrinting_Jump_Between_Curves](Pictures/RoboticPrinting_Jump_Between_Curves.jpg)
+
+4.
+![RoboticPrinting_Non-Planar_Extrusion](Pictures/RoboticPrinting_Non-Planar_Extrusion.jpg)
+
+5.
+![RoboticPrinting_Open_Curve](Pictures/RoboticPrinting_Open_Curve.jpg)
+
+6.
+![RoboticPrinting_Seam_Ajustment](Pictures/RoboticPrinting_Seam_Ajustment.jpg)
 
 ## Overview
 This repository contains everyting needed to get started with robotic thermoplastic printing with the [MDPH2 from Massive Dimension](https://massivedimension.com/products/mdphe-v1-pellet-head-extruder-system) and the [Universal Robot UR10e](https://www.universal-robots.com/products/ur10-robot/) (or any UR model capable of handeling the weight).
