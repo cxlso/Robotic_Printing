@@ -2,7 +2,7 @@
 ###### A controller box and mounts to get started with the Massive Dimension thermoplastic extruder MDPH2 on UR10e
 
 1.
-![RobotPrint_Ajustable_Speed](Pictures/RobotPrint_Ajustable_Speed.jpg)
+![RoboticPrinting_Ajustable_Speed](Pictures/RoboticPrinting_Ajustable_Speed.jpg)
 
 2.
 ![RoboticPrinting_Basic_Script](Pictures/RoboticPrinting_Basic_Script.jpg)
