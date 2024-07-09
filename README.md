@@ -1,107 +1,72 @@
 # Robotic Printing
-###### A controller box and mounts to get started with the Massive Dimension thermoplastic extruder MDPH2 on UR10e
+###### Open-source Grasshopper scripts for 3D printing with a UR robotic arm, tailored for various extrusion processes
 
-1.
+This repository contains Grasshopper scripts designed for 3D printing with a robotic arm, specifically using a UR10e and the Robots plugin by Viscose. Each script is tailored for different aspects of the robotic extrusion process, with illustrations provided for each definition.
+
+The field of computer-aided design often lacks cohesive resources for robotic arm applications, with existing materials being scattered, disorganized, or closed source. This project addresses these challenges by offering open-source tools and comprehensive documentation. I designed these scripts as part of my work at FAU to help set up the robotic lab from scratch.
+
+All scripts share a common base setup for the tool and system, including choosing the robot, setting parameters such as speed and extrusion rate, and providing a similar user interface. More scripts will be added over time.
+
+## Getting Started
+
+Each script includes detailed comments and annotations to help you understand and customize them for your specific needs. These scripts were tested using a UR10e robotic arm.
+
+### Hardware Requirements
+
+- Universal Robot arm (or any 6-axis compatible arm)
+- Extruder
+- Controller box for the extruder
+
+### Software Requirements
+
+- Rhinoceros 3D Grasshopper
+- Robots plugin by Viscose
+- Extra plugins: Flexibility, Pufferfish, Parakeet
+
+## Scripts Overview
+
+### 1. Robotic Printing Basic Script
+
 ![RoboticPrinting_Ajustable_Speed](Pictures/RoboticPrinting_Ajustable_Speed.jpg)
 
-2.
+This script includes everything you need to get started with robotic extrusion on a Universal Robot. It serves as the foundation for the other, more specialized scripts.
+
+### 2. Robotic Printing Open Curve
+
 ![RoboticPrinting_Basic_Script](Pictures/RoboticPrinting_Basic_Script.jpg)
 
-3.
+Designed for printing non-closed objects, this script creates vertical zigzagging, which is useful for portions of an object with a hole. It can be used in addition to the standard closed curve technique. Applications include creating a two-part mold of a column or a shape with a vertical opening from the side.
+
+### 3. Robotic Printing Seam Adjustment
+
 ![RoboticPrinting_Jump_Between_Curves](Pictures/RoboticPrinting_Jump_Between_Curves.jpg)
 
-4.
+This script allows for the adjustment of seam points in an object. The end points of a curve are relative to an adjustable attractor point, enabling you to hide the seam or place it in a convenient location. It also helps fix random endpoint errors that can occur during contouring. For example, bypassing this part of the script can reveal path errors.
+
+### 4. Robotic Printing Jump Between Curves
+
 ![RoboticPrinting_Non-Planar_Extrusion](Pictures/RoboticPrinting_Non-Planar_Extrusion.jpg)
 
-5.
+This definition enables jumping from one curve to another and stopping/starting the extrusion command when printing complex shapes. Steps to use:
+1. Split your shape into multiple parts to isolate the zone requiring jumping.
+2. Set up the jump height.
+3. Set up the position of the extrusion ON/OFF command for the jump. An offset can be added if the extruder is unpredictable. Overlap can be useful.
+
+### 5. Robotic Printing Non-Planar Extrusion
+
 ![RoboticPrinting_Open_Curve](Pictures/RoboticPrinting_Open_Curve.jpg)
 
-6.
+This script slices your BRep with tweened surfaces automatically generated from the BRep. You need to create a curve at the center of your volume, from bottom to top, which will be used to generate one or more surfaces to control the planar orientation of the toolpath. For meshes, additional smoothing operations and threshold controls are required to avoid open curves.
+
+6.Robotic Printing Adjustable Speed
+
 ![RoboticPrinting_Seam_Ajustment](Pictures/RoboticPrinting_Seam_Ajustment.jpg)
 
-## Overview
-This repository contains everyting needed to get started with robotic thermoplastic printing with the [MDPH2 from Massive Dimension](https://massivedimension.com/products/mdphe-v1-pellet-head-extruder-system) and the [Universal Robot UR10e](https://www.universal-robots.com/products/ur10-robot/) (or any UR model capable of handeling the weight).
-
-Included in the repository are:
-
-- Controller Box CAD Files: For 3D printing the structure and laser cutting the acrylic walls of the controller box,
-- Mounts CAD Files: For 3d printing mounts to secure the clay tank, extruder, and pressure gauge,
-- Scripts: Arduino code for the controller and Grasshopper toolpath example.
-
-## Note on the Signal Workflow
-
-The workflow begins with the Grasshopper script embedding the extrusion commands (rate and direction) into the URP file. This file instructs the UR10e to output two analog voltage signals (0-5V) on AO0 (Pul) and AO1 (Dir). These signals are read by the Arduino on pins A0 (Pul) and A1 (Dir), which translates them into digital signals on pins D2 (Pul) and D3 (Dir) for the ClearPath servo motor of the MDPH2.
-
-The analog signals can also be overwritten in real-time using the UR Teaching Pendant. 
-
-**Grasshopper (Extrusion Command Embeded in URP file/G-Code ) ⟶ UR10e (Analog Output 0-5V) ⟶ Arduino (Analog Input) ⟶ MDPH2's Servo Motor (Digital Signal)**
-
-**Note:** The temperature is not controlled by the Grasshopper script. The temperature must be set manually on the PID controller. Allow the extruder to warm up to the desired temperature before starting extrusion to prevent motor damage due to high torque.  
-For PLA, we set the temperature to 190°C. It is recommended to stay on the lower end of the melting temperature spectrum to maintain high viscosity, reduce stringing, and minimize cooling time.
-
-## Components
-
-- Arduino Nano
-- LM2596 Stepdown reducer 24v to 12v
-- Rocker Switch
-- Inkbird ITC-100 PID Temperature Controller (comes with the MDPH2)
-- IPC-5 75v Power Supply (comes with the MDPH2)
-- Solid State Relay (comes with the MDPH2)
-- 24v Power Supply
-- M3 and M4 Hex Socket Head Screws
-- 3mm Acrylic Sheet
-- Electrical Connectors (JST XH in our case)
-- 18 and 24awg cables 
-
-## Setup and Installation
-
-### Prerequisites
-
-- UR10e Robotic Arm (or any UR models),
-- Massive Dimension MDPH2 Thermoplastic extruder,
-- Rhino Grasshopper: For generating toolpath commands.
-
-### Wiring Diagram
-
-Refer to the following wiring diagram for the electrical connections.
-
-![MDPH2_on_UR10e_Wire_Diagram](Controller_Box/Wiring_Diagram/MDPH2_on_UR10e_Wire_Diagram.svg)
-Diagram made with the open-source tool [Fritzing](https://fritzing.org/).
-
-### Controller Box and Mount CAD Files
-
-- [MDPH2 Extruder Mount](Mount/Print_MD_Extruder_Mount.stl) 3D printing file,
-- [Structure](Controller_Box/CAD/Print_MD_Skeleton.stl) 3D printing file. Skeleton inside de box holding all the components in place,
-- [Corner brackets](Controller_Box/CAD/Print_MD_Corner_Bracket.stl) 3D printing file,
-- [3MM acrylic wall](Controller_Box/CAD/Cut_MD_3MM_Walls.AI) Laser cutting file.
-
-### Scripts
-
-#### [Arduino Script](Arduino/Stepper_PulseDir_MD)
-
-Upload the provided code to the Arduino Nano. Ensure all connections are made according to the wiring diagram.
-
-#### [Grasshopper Definition](Grasshopper/Basic_Robotic_Extrusion_MDPH2.gh)
-
-The [Robots](https://www.food4rhino.com/en/app/robots) plugin is necessary. The extrusion rate is set in RPM and is converted to steps per second with the following equation:
-$$y = \left( \frac{x \times 800}{60} \right)$$
-Where 800 represents the number of steps per revolution for the stepper motor, and 60 is used to convert minutes to seconds, resulting in the conversion of RPM (x) to steps per second (y).
-
-The actual RPM can be checked through [ClearPath MSP](https://www.teknic.com/files/downloads/motor_setup.zip) via the micro USB cable on top of the servo motor.
-
-The mass and center of gravity can be found in the Grasshopper script. These settings are very important for this extruder as it is reaching the load capacity of the UR10e. 
-
-## Photos and Videos
-
-https://github.com/cxlso/MDPH2_on_UR10e/assets/29285706/ac5a9cc8-03f6-4395-85b4-7b0d291706e9
-
-https://github.com/cxlso/MDPH2_on_UR10e/assets/29285706/749127e9-4e9b-446a-b5af-80f2f0c1dffd
-
-<img src="https://github.com/cxlso/MDPH2_on_UR10e/assets/29285706/128c2434-52cd-4ef8-8e8a-50a991110c6a" width="30%"></img> <img src="https://github.com/cxlso/MDPH2_on_UR10e/assets/29285706/effd8bc1-c4e3-410f-8999-9d7a34db1e4b" width="30%"></img> <img src="https://github.com/cxlso/MDPH2_on_UR10e/assets/29285706/a2818543-1c64-4062-9cc6-14fa658f7270" width="30%"></img> <img src="https://github.com/cxlso/MDPH2_on_UR10e/assets/29285706/daca66d9-8102-4669-9728-286e8a8b9e8d" width="30%"></img> <img src="https://github.com/cxlso/MDPH2_on_UR10e/assets/29285706/bd144e61-af86-4097-93f5-d0e02794067f" width="30%"></img> 
-
+This script provides variable speed or extrusion rates to compensate for localized differences in layer height in certain areas. Define a curve as an attractor for variable speed and adjust the Bézier curve on the GraphMapper to control the speed transition precisely. A color gradient helps visualize the speed.
+ 
 ## Contributing
 
-Contributions are welcome! Please submit a pull request or open an issue to discuss any changes or improvements.
+Contributions and suggestions are welcome! Please submit a pull request or open an issue to discuss any changes or improvements. You can also contact me.
 
 ## License
 
