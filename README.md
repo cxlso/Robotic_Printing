@@ -82,7 +82,7 @@ This script slices your BRep with tweened surfaces automatically generated from 
 <img src="Pictures/RoboticPrinting_Ajustable_Speed-small.jpg" width="50%">
 </p>
 
-This script provides variable speed or extrusion rates to compensate for localized differences in layer height in certain areas. Define a curve as an attractor for variable speed and adjust the Bézier curve on the GraphMapper to control the speed transition precisely. A color gradient helps visualize the speed.
+This script provides variable speed or extrusion rates to compensate for localized differences in layer height in certain areas. Define a curve as an attractor for variable speed and adjust the Bezier curve on the GraphMapper to control the speed transition precisely. A color gradient helps visualize the speed.
 
 ## Photos and Videos
 
