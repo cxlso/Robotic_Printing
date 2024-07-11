@@ -1,5 +1,5 @@
 # Robotic Printing
-###### Open-source Grasshopper scripts for 3D printing with a UR robotic arm, tailored for various extrusion processes
+###### Open-source Grasshopper definitions for 3D printing with a UR robotic arm, tailored for various extrusion processes
 
 ![Cover](Pictures/Cover.jpg)
 
