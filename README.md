@@ -1,7 +1,9 @@
 # Robotic Printing
 ###### Open-source Grasshopper scripts for 3D printing with a UR robotic arm, tailored for various extrusion processes
 
-This repository contains Grasshopper scripts designed for 3D printing with a robotic arm, specifically using a UR10e and the Robots plugin by Viscose. Each script is tailored for different aspects of the robotic extrusion process, with illustrations provided for each definition.
+![Cover](Pictures/Cover.jpg)
+
+This repository contains Grasshopper scripts designed for 3D printing with a robotic arm, specifically using a UR10e and the [Robots](https://www.food4rhino.com/en/app/robots) plugin by Visose. Each script is tailored for different aspects of the robotic extrusion process, with illustrations provided for each definition.
 
 The field of computer-aided design often lacks cohesive resources for robotic arm applications, with existing materials being scattered, disorganized, or closed source. This project addresses these challenges by offering open-source tools and comprehensive documentation. I designed these scripts as part of my work at FAU to help set up the robotic lab from scratch.
 
@@ -15,37 +17,39 @@ Each script includes detailed comments and annotations to help you understand an
 
 - Universal Robot arm (or any 6-axis compatible arm)
 - Extruder
-- Controller box for the extruder
+- Controller box for the extruder (see my other projects: [WASP Clay Kit Controller](https://github.com/cxlso/WASP_Clay_Kit_on_UR10e), [MDPH2 Controller](https://github.com/cxlso/MDPH2_on_UR10e))  
 
 ### Software Requirements
 
 - Rhinoceros 3D Grasshopper
-- Robots plugin by Viscose
-- Extra plugins: Flexibility, Pufferfish, Parakeet
+- [Robots](https://www.food4rhino.com/en/app/robots) plugin by Viscose
+- Extra plugins: [Flexibility](https://www.food4rhino.com/en/app/flexibility), [Pufferfish](https://www.food4rhino.com/en/app/pufferfish), [Parakeet](https://www.food4rhino.com/en/app/parakeet), [Human](https://www.food4rhino.com/en/app/human)
 
 ## Scripts Overview
 
 ### 1. Robotic Printing Basic Script
 
-![RoboticPrinting_Ajustable_Speed](Pictures/RoboticPrinting_Ajustable_Speed.jpg)
+![RoboticPrinting_Basic_Script](Pictures/RoboticPrinting_Basic_Script.jpg)
+![RoboticPrinting_Basic_Script](Pictures/RoboticPrinting_Basic_Script.jpg)
 
 This script includes everything you need to get started with robotic extrusion on a Universal Robot. It serves as the foundation for the other, more specialized scripts.
 
 ### 2. Robotic Printing Open Curve
 
-![RoboticPrinting_Basic_Script](Pictures/RoboticPrinting_Basic_Script.jpg)
+![RoboticPrinting_Open_Curve](Pictures/RoboticPrinting_Open_Curve.jpg)
 
 Designed for printing non-closed objects, this script creates vertical zigzagging, which is useful for portions of an object with a hole. It can be used in addition to the standard closed curve technique. Applications include creating a two-part mold of a column or a shape with a vertical opening from the side.
 
 ### 3. Robotic Printing Seam Adjustment
 
-![RoboticPrinting_Jump_Between_Curves](Pictures/RoboticPrinting_Jump_Between_Curves.jpg)
+![RoboticPrinting_Seam_Ajustment](Pictures/RoboticPrinting_Seam_Ajustment.jpg)
+
 
 This script allows for the adjustment of seam points in an object. The end points of a curve are relative to an adjustable attractor point, enabling you to hide the seam or place it in a convenient location. It also helps fix random endpoint errors that can occur during contouring. For example, bypassing this part of the script can reveal path errors.
 
 ### 4. Robotic Printing Jump Between Curves
 
-![RoboticPrinting_Non-Planar_Extrusion](Pictures/RoboticPrinting_Non-Planar_Extrusion.jpg)
+![RoboticPrinting_Jump_Between_Curves](Pictures/RoboticPrinting_Jump_Between_Curves.jpg)
 
 This definition enables jumping from one curve to another and stopping/starting the extrusion command when printing complex shapes. Steps to use:
 1. Split your shape into multiple parts to isolate the zone requiring jumping.
@@ -54,13 +58,13 @@ This definition enables jumping from one curve to another and stopping/starting 
 
 ### 5. Robotic Printing Non-Planar Extrusion
 
-![RoboticPrinting_Open_Curve](Pictures/RoboticPrinting_Open_Curve.jpg)
+![RoboticPrinting_Non-Planar_Extrusion](Pictures/RoboticPrinting_Non-Planar_Extrusion.jpg)
 
 This script slices your BRep with tweened surfaces automatically generated from the BRep. You need to create a curve at the center of your volume, from bottom to top, which will be used to generate one or more surfaces to control the planar orientation of the toolpath. For meshes, additional smoothing operations and threshold controls are required to avoid open curves.
 
 6.Robotic Printing Adjustable Speed
 
-![RoboticPrinting_Seam_Ajustment](Pictures/RoboticPrinting_Seam_Ajustment.jpg)
+![RoboticPrinting_Ajustable_Speed](Pictures/RoboticPrinting_Ajustable_Speed.jpg)
 
 This script provides variable speed or extrusion rates to compensate for localized differences in layer height in certain areas. Define a curve as an attractor for variable speed and adjust the Bézier curve on the GraphMapper to control the speed transition precisely. A color gradient helps visualize the speed.
  
