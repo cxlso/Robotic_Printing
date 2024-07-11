@@ -3,7 +3,7 @@
 
 ![Cover](Pictures/Cover.jpg)
 
-This repository contains Grasshopper scripts designed for 3D printing with a robotic arm, specifically using a UR10e and the [Robots](https://www.food4rhino.com/en/app/robots) plugin by Visose. Each script is tailored for different aspects of the robotic extrusion process, with illustrations provided for each definition.
+This repository contains Grasshopper definitions designed for 3D printing with a robotic arm, specifically using a UR10e and the [Robots](https://www.food4rhino.com/en/app/robots) plugin by Visose. Each script is tailored for different aspects of the robotic extrusion process, with illustrations provided for each definition.
 
 The field of computer-aided design often lacks cohesive resources for robotic arm applications, with existing materials being scattered, disorganized, or closed source. This project addresses these challenges by offering open-source tools and comprehensive documentation. I designed these scripts as part of my work at FAU to help set up the robotic lab from scratch.
 
