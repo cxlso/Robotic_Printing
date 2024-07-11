@@ -75,7 +75,7 @@ This definition enables jumping from one curve to another and stopping/starting 
 
 This script slices your BRep with tweened surfaces automatically generated from the BRep. You need to create a curve at the center of your volume, from bottom to top, which will be used to generate one or more surfaces to control the planar orientation of the toolpath. For meshes, additional smoothing operations and threshold controls are required to avoid open curves.
 
-6.Robotic Printing Adjustable Speed
+### 6. Robotic Printing Adjustable Speed
 
 ![RoboticPrinting_Ajustable_Speed](Pictures/RoboticPrinting_Ajustable_Speed.jpg)
 <p align="center">
